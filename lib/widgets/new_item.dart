@@ -24,7 +24,13 @@ class _NewItemState extends State<NewItem> {
                 maxLength: 50,
                 decoration: InputDecoration(label: Text('Name')),
                 validator: (value) {
-                  return 'Demo...';
+                  if (value == null ||
+                      value.isEmpty ||
+                      value.trim().length <= 1 ||
+                      value.trim().length > 50) {
+                    return 'Must be between 1 and 50 characters.';
+                  }
+                  return null;
                 },
               ),
               Row(
@@ -34,6 +40,15 @@ class _NewItemState extends State<NewItem> {
                     child: TextFormField(
                       decoration: InputDecoration(label: Text('Quantity')),
                       initialValue: '1',
+                      validator: (value) {
+                        if (value == null ||
+                            value.isEmpty ||
+                            int.tryParse(value) == null ||
+                            int.tryParse(value)! <= 0) {
+                          return 'Must be a value positive number.';
+                        }
+                        return null;
+                      },
                     ),
                   ),
                   SizedBox(width: 8),
