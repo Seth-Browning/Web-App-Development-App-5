@@ -97,7 +97,7 @@ class _GroceryListState extends State<GroceryList> {
     });
 
     final url = Uri.https(
-      'ababa-flutter-prep-5aab2-default-rtdb.firebaseio.com',
+      'flutter-prep-5aab2-default-rtdb.firebaseio.com',
       'shopping-list/${item.id}.json',
     );
 
